@@ -1,2 +1,2 @@
-# smart_differential_calculator_and_visualizer
-C project that visualizes step-by-step the differentiation of an expression after parsing a mathematical expression .
+# SMART_DIFFERENTIAL_CALCULATOR_AND_VISUALIZER
+C PROJECT THAT VISUALIZES STEP-BY-STEP THE DIFFERENTIATION OF AN EXPRESSION AFTER PARSING A MATHEMATICAL EXPRESSION .
