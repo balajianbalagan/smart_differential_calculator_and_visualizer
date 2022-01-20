@@ -1,125 +1,102 @@
 #include <stdio.h>
 #include <stdlib.h>
-#define EmptyTOS -1
-#define MINSTACKSIZE 3
-struct stack_record
+struct noderec
 {
-    int *SArray;
-    int topofstack;
-    int capacity;
+    int info;
+    struct noderec *next;
 };
-typedef struct stack_record *stack;
-stack createstack(int maxElements)
+typedef struct noderec *node;
+node new, temp, prev;
+typedef node stack;
+
+stack create()
 {
     stack s;
-    if (maxElements < MINSTACKSIZE)
-    {
-        printf("Error:Stack size is too small\n");
-    }
-    else
-    {
-        s = (struct stack_record *)malloc(sizeof(struct stack_record));
-        s->SArray = (int *)malloc(sizeof(int) * maxElements);
-        if (s->SArray == NULL)
-        {
-            printf("Fatal Error\n");
-        }
-        s->topofstack = EmptyTOS;
-        s->capacity = maxElements;
-        printf("stack created\n");
-        return s;
-    }
+    s = (struct noderec *)malloc(sizeof(struct noderec *));
+    s->next = NULL;
 }
-int isFull(stack s)
-{
-    return ((s->topofstack) == ((s->capacity) - 1));
-}
+
 int isEmpty(stack s)
 {
-    return ((s->topofstack) == -1);
+    return (s->next == NULL);
 }
-void DisposeStack(stack s)
+void push(stack s, int x)
 {
-    if (s->SArray != NULL)
-    {
-        free(s->SArray);
-        free(s);
-    }
-    else
-    {
-        printf("Already Empty\n");
-    }
-}
-stack push(stack s, int element)
-{
-    if (isFull(s))
-    {
-        printf("Stack is full new element can't be inserted\n");
-    }
-    else
-    {
-        s->SArray[++(s->topofstack)] = element;
-    }
-    return s;
+    new = (struct noderec *)malloc(sizeof(struct noderec *));
+    new->info = x;
+    new->next = s->next;
+    s->next = new;
 }
 void pop(stack s)
 {
-    if (isEmpty(s))
+    if (!isEmpty(s))
     {
-        printf("stack is already empty can't do pop\n");
+        temp = s->next;
+        s->next = temp->next;
+        free(temp);
     }
     else
     {
-        (s->topofstack)--;
-        printf("POP occurred\n");
+        printf("\nList is already Empty\n");
     }
 }
 int top(stack s)
 {
-    if (isEmpty(s))
+    if (!isEmpty(s))
     {
-        printf("stack is empty can't display the top element\n");
+        return ("%d", (s->next)->info);
     }
     else
     {
-        return (s->SArray[s->topofstack]);
+        printf("\nList is already Empty\n");
     }
 }
 int topandpop(stack s)
 {
-    if (!(isEmpty(s)))
+    if (!isEmpty(s))
     {
-        int topelem = top(s);
+        int t = ("%d", (s->next)->info);
         pop(s);
-        printf("Pop occurred\n");
-        return topelem;
-    }
-    return -1;
-}
-void makeempty(stack s)
-{
-    if (isEmpty(s))
-    {
-        printf("Already empty!");
+        return t;
     }
     else
     {
-        s->topofstack = -1;
+        printf("\nList is already Empty\n");
     }
 }
-void displaystack(stack s)
+void makeempty(stack s)
 {
+    while (!isEmpty(s))
+    {
+        pop(s);
+    }
+}
+void disposestack(stack s)
+{
+    if (s != NULL)
+    {
+        makeempty(s);
+        free(s);
+    }
+    else
+    {
+        printf("\nList is already Empty\n");
+    }
+}
+void display(stack s)
+{
+    temp = s->next;
     if (!isEmpty(s))
     {
-        printf("The elements are \n");
-        for (int i = s->topofstack; i >= 0; i--)
+        while (temp != NULL)
         {
-            printf(" %d ", s->SArray[i]);
+            printf("%d ", temp->info);
+            temp = temp->next;
         }
         printf("\n");
     }
     else
     {
-        printf("The stack is empty\n");
+        printf("\nList is already Empty\n");
     }
 }

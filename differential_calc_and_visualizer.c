@@ -1,14 +1,16 @@
 #include <stdio.h>
 #include "stack.h"
 
-stack fillstack(char *input)
+int derivativeVal()
 {
+  return 0;
 }
 
 int main()
 {
 
-  stack stack = createstack(5);
-
+  stack s = create();
+  push(s, 2);
+  display(s);
   return 0;
 }
