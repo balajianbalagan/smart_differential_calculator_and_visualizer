@@ -1,8 +1,9 @@
 #include <stdio.h>
+#include <string.h>
 #include <stdlib.h>
 struct noderec
 {
-    int info;
+    char info[300];
     struct noderec *next;
 };
 typedef struct noderec *node;
@@ -20,10 +21,12 @@ int isEmpty(stack s)
 {
     return (s->next == NULL);
 }
-void push(stack s, int x)
+void push(stack s, char x[])
 {
     new = (struct noderec *)malloc(sizeof(struct noderec *));
-    new->info = x;
+    strcpy(new->info,x);
+    // strcpy(s->next,new);
+    // new->info = x;
     new->next = s->next;
     s->next = new;
 }
@@ -40,22 +43,24 @@ void pop(stack s)
         printf("\nList is already Empty\n");
     }
 }
-int top(stack s)
+char* top(stack s)
 {
+    char *res;
     if (!isEmpty(s))
     {
-        return ("%d", (s->next)->info);
+        res= (s->next)->info;
+        return res;
     }
     else
     {
         printf("\nList is already Empty\n");
     }
 }
-int topandpop(stack s)
+char* topandpop(stack s)
 {
     if (!isEmpty(s))
     {
-        int t = ("%d", (s->next)->info);
+        char *t =  (s->next)->info;
         pop(s);
         return t;
     }
@@ -90,7 +95,7 @@ void display(stack s)
     {
         while (temp != NULL)
         {
-            printf("%d ", temp->info);
+            printf("%s ", temp->info);
             temp = temp->next;
         }
         printf("\n");
