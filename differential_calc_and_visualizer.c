@@ -3,14 +3,16 @@
 
 int derivativeVal()
 {
-  return 0;
+  long int ans = 0;
+
+  return ans;
 }
 
 int main()
 {
 
-  stack s = create();
-  push(s, 2);
-  display(s);
+  stack input = create();
+  stack output = create();
+
   return 0;
 }
