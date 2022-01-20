@@ -24,7 +24,7 @@ int isEmpty(stack s)
 void push(stack s, char x[])
 {
     new = (struct noderec *)malloc(sizeof(struct noderec *));
-    strcpy(new->info,x);
+    strcpy(new->info, x);
     // strcpy(s->next,new);
     // new->info = x;
     new->next = s->next;
@@ -43,12 +43,12 @@ void pop(stack s)
         printf("\nList is already Empty\n");
     }
 }
-char* top(stack s)
+char *top(stack s)
 {
     char *res;
     if (!isEmpty(s))
     {
-        res= (s->next)->info;
+        res = (s->next)->info;
         return res;
     }
     else
@@ -56,11 +56,11 @@ char* top(stack s)
         printf("\nList is already Empty\n");
     }
 }
-char* topandpop(stack s)
+char *topandpop(stack s)
 {
     if (!isEmpty(s))
     {
-        char *t =  (s->next)->info;
+        char *t = (s->next)->info;
         pop(s);
         return t;
     }
@@ -88,7 +88,7 @@ void disposestack(stack s)
         printf("\nList is already Empty\n");
     }
 }
-void display(stack s)
+void displaystack(stack s)
 {
     temp = s->next;
     if (!isEmpty(s))

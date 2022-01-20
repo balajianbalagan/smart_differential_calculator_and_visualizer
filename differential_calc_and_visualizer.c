@@ -9,34 +9,30 @@ int derivativeVal(stack poly, int val)
   return ans;
 }
 
-stack parse(char str[200])
+stack parse2(char str[200])
 {
-  char tempstr[100];
-  printf("%s\n", str);
-  for (int i = 0; i < strlen(str); i++)
+  stack input;
+  char *token = strtok(str, "+");
+  // loop through the string to extract all other tokens
+  while (token != NULL)
   {
-    printf("%c\n", str[i]);
-    char one=str[i];
-    if (one=='+' || one=='-')
-    {
-      // input.push(tempstr);
-      // char tempstr[100] = "\0";
-    }
-    else
-    {
-      strcat(tempstr, &str[i]);
-      printf("%s\n", tempstr);
-    }
+    // printf("pushing element %s\n", token);
+    push(input, token);
+    token = strtok(NULL, "+");
   }
+  return input;
 }
 
 int main()
 {
-  char str[200]="2x+3x";
-//   scanf("%[^\n]%*c", str);
-  parse(str);
+  char str[200];
+  scanf("%[^\n]%*c", str);
+
   stack input = create();
   stack output = create();
+
+  input = parse2(str);
+  displaystack(input);
 
   return 0;
 }
