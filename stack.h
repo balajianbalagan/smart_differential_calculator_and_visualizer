@@ -38,10 +38,6 @@ void pop(stack s)
         s->next = temp->next;
         free(temp);
     }
-    else
-    {
-        printf("\nList is already Empty\n");
-    }
 }
 char *top(stack s)
 {
@@ -58,9 +54,10 @@ char *top(stack s)
 }
 char *topandpop(stack s)
 {
+    char *t;
     if (!isEmpty(s))
     {
-        char *t = (s->next)->info;
+        t = (s->next)->info;
         pop(s);
         return t;
     }
