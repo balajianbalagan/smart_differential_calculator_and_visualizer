@@ -119,7 +119,7 @@ void display(header l)
         while(temp!=NULL)
         {
             // printf(" %s %d \n",temp->info,temp->fn);
-            printf("%s",temp->info);
+            printf(" %s ",temp->info);
             temp=temp->rptr;
         }
         printf("\n");

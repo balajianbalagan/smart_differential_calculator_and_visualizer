@@ -76,7 +76,8 @@ int main()
     char inpstr[300];
     scanf("%[^\n]%*c", inpstr);
     storinput(inpstr,inputarray);
-    display(inputarray);
     node output=postfix(inputarray);
+    printf("Postfix expression : \n");
+    display(output);
     return 0;
 }

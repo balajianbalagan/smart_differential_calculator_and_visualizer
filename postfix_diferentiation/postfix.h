@@ -18,7 +18,7 @@ node postfix(node inparr)
         insertEnd(temp,")",5);
         while(temp!=NULL)
         {
-           if(temp->fn==0 || strcmp("x",temp->info)==0 )//check for numbers
+           if(temp->fn==0 || temp->fn==2  )//check for numbers
            {
                insertEnd(parsearr,temp->info,temp->fn);
            }
@@ -27,10 +27,10 @@ node postfix(node inparr)
            }
            else if(temp->fn==3)//check for operators
            {
-               printf("Enter the operation\n");
+              
                if(strcmp("*",temp->info)==0 || strcmp("/",temp->info)==0)
                {
-                   printf("Enter the * / \n");
+
                    while((strcmp(top(postfix_stack),"*")==0) || (strcmp(top(postfix_stack),"/")==0))
                    {
                         insertEnd(parsearr,top(postfix_stack),topfn(postfix_stack));
@@ -58,14 +58,16 @@ node postfix(node inparr)
                    }
                    push(postfix_stack,temp->info,temp->fn);
                }
-               else if(strcmp("]",temp->info)==0)
-               {
-                   while(strcmp("[",top(postfix_stack))!=0)
+               
+           }
+           else if(strcmp("]",temp->info)==0)
+            {
+                while(strcmp("[",top(postfix_stack))!=0)
                    {
                        insertEnd(parsearr,top(postfix_stack),topfn(postfix_stack));
                         pop(postfix_stack);
                    }
-                   push(postfix_stack,temp->info,temp->fn);
+                   pop(postfix_stack);
                }
                else if(strcmp("}",temp->info)==0)
                {
@@ -74,7 +76,7 @@ node postfix(node inparr)
                        insertEnd(parsearr,top(postfix_stack),topfn(postfix_stack));
                         pop(postfix_stack);
                    }
-                   push(postfix_stack,temp->info,temp->fn);
+                   pop(postfix_stack);
                }
                else if(strcmp(")",temp->info)==0)
                {
@@ -83,14 +85,10 @@ node postfix(node inparr)
                        insertEnd(parsearr,top(postfix_stack),topfn(postfix_stack));
                         pop(postfix_stack);
                    }
-                   push(postfix_stack,temp->info,temp->fn);
+                   pop(postfix_stack);
                }
-           }
             temp=temp->rptr;
         }
-        printf("After the postfix conversion : ");
-        display(parsearr);
-        // displaystack(postfix_stack);
         return parsearr;
     }
 }
