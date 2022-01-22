@@ -3,6 +3,7 @@
 #include <stdlib.h>
 #include <conio.h>
 #include "stack.h"
+
 long long int derivative_value = 0;
 
 void derivativeVal(int val)
@@ -66,8 +67,8 @@ int main()
 
   while (!isEmpty(input))
   {
-    printf("\nbefore diff : %s\n", top(input));
-    // printf("\ndata entered : %s\n", differentiateterm(top(input)));
+    // printf("\nbefore diff : %s\nafter diff : %s\n", top(input), differentiateterm(top(input)));
+    // printf("\ndata entered : %s\n", );
     push(output, differentiateterm(top(input)));
 
     pop(input);
