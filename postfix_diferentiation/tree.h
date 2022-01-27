@@ -1,18 +1,22 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-struct treenode
+
+// 1) inorder shld return a string
+// 2) no main function shld be involved
+// 3)
+struct tree
 {
     char info[200];
     int tfn;
-    struct treenode *leftchild;
-    struct treenode *rightchild;
-    struct treenode *next;
+    struct tree *leftchild;
+    struct tree *rightchild;
+    struct tree *next;
 };
-struct treenode *head = NULL;
-struct treenode *newNode(char *info, int tfn)
+struct tree *head = NULL;
+struct tree *newNode(char *info, int tfn)
 {
-    struct treenode *node = (struct treenode *)malloc(sizeof(struct treenode));
+    struct tree *node = (struct tree *)malloc(sizeof(struct tree));
     strcpy(node->info, info);
     node->tfn = tfn;
     node->leftchild = NULL;
@@ -21,7 +25,7 @@ struct treenode *newNode(char *info, int tfn)
 
     return (node);
 }
-void printInorder(struct treenode *node)
+void printInorder(struct tree *node)
 {
     if (node == NULL)
         return;
@@ -35,7 +39,7 @@ void printInorder(struct treenode *node)
     }
 }
 
-void push(struct treenode *x)
+void push(struct tree *x)
 {
     if (head == NULL)
         head = x;
@@ -45,9 +49,9 @@ void push(struct treenode *x)
         head = x;
     }
 }
-struct treenode *pop()
+struct tree *pop()
 {
-    struct treenode *p = head;
+    struct tree *p = head;
     head = head->next;
     return p;
 }
@@ -55,7 +59,7 @@ int main()
 {
     char s[] = {'A', 'B', 'C', '*', '+', 'D', '/'};
     int l = sizeof(s) / sizeof(s[0]);
-    struct treenode *x, *y, *z;
+    struct tree *x, *y, *z;
     for (int i = 0; i < l; i++)
     {
         if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/' || s[i] == '^')

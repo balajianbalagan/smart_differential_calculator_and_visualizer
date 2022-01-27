@@ -82,6 +82,11 @@ int main()
     node output = postfix(inputarray);
     printf("Postfix expression : \n");
     display(output);
-
+    printf("\n");
+    tree t = expressiontree(output);
+    node diff = createlist();
+    differentiate(t, diff);
+    printf("Differentiated ecpression : \n");
+    display(diff);
     return 0;
 }
