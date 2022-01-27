@@ -25,9 +25,29 @@ struct tree *newNode(char *info, int tfn)
 
     return (node);
 }
+// char * inorder(struct tree *node,char *io)
+// {
+//     char *nu="\0";
+//     if (node == NULL)
+//         return nu;
+//     else
+//     {
+//         char *l=inorder(node->leftchild,io);
+
+//         printf( " inside==%s\n",node->info);
+       
+//         strcat(io, node->info);
+//          printf( " io==%s\n",io);
+//         /* now recur on rightchild child */
+//          char *ll=inorder(node->rightchild,io);
+//     }
+//     printf("1\n");
+//     char *tptr=io;
+//     return tptr;
+// }
+char io[100];
 char * inorder(struct tree *node)
 {
-    char io[200];
     char *nu="\0";
     if (node == NULL)
         return nu;
@@ -42,7 +62,6 @@ char * inorder(struct tree *node)
     char *tptr=io;
     return tptr;
 }
-
 void treepush(struct tree *x)
 {
     if (head == NULL)

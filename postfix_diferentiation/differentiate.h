@@ -2,7 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-
+// #include "doublylinkedlist.h"
+// #include "tree.h"
 void differentiate(struct tree *etree, node findiff)
 {
     node diff = createlist();
@@ -36,21 +37,23 @@ void differentiate(struct tree *etree, node findiff)
     else if (etree->tfn == 3 && strcmp(etree->info, "*"))
     {
         insertEnd(diff, inorder(etree->leftchild), 1);
+        strcpy(io,"\0");
         differentiate(etree->rightchild, diff);
         insertEnd(diff, "+", 3);
         insertEnd(diff, inorder(etree->rightchild), 1);
+        strcpy(io,"\0");
         differentiate(etree->leftchild, diff);
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "/"))
     {
-        insertEnd(diff, inorder(etree->leftchild), 1);
+        insertEnd(diff, inorder(etree->leftchild), 1);strcpy(io,"\0");
         differentiate(etree->rightchild, diff);
         insertEnd(diff, "-", 3);
-        insertEnd(diff, inorder(etree->rightchild), 1);
+        insertEnd(diff, inorder(etree->rightchild), 1);strcpy(io,"\0");
         differentiate(etree->leftchild, diff);
         insertEnd(diff, "/", 3);
         insertEnd(diff, "(", 4);
-        insertEnd(diff, inorder(etree->rightchild), 1);
+        insertEnd(diff, inorder(etree->rightchild), 1);strcpy(io,"\0");
         insertEnd(diff, ")", 5);
         insertEnd(diff, "^", 3);
         insertEnd(diff, "2", 0);
@@ -68,5 +71,6 @@ void differentiate(struct tree *etree, node findiff)
         insertEnd(diff, "*", 3);
         differentiate(etree->leftchild, diff);
     }
+    display(diff);
     findiff = diff;
 }

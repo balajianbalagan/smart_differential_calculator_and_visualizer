@@ -4,8 +4,6 @@
 #include <ctype.h>
 #include "tree.h"
 #include "postfix.h"
-
-// #include "tree.h"
 #include "differentiate.h"
 
 int numstr(char *n, node arr)
@@ -88,7 +86,8 @@ int main()
     printf("\n");
 
     struct tree *t = expressiontree(output);
-
+    // char *o=inorder(t);
+    // printf("%s",o);
     node findiff = createlist();
     differentiate(t, findiff);
     printf("Differentiated ecpression : \n");
