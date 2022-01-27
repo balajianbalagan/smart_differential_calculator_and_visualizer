@@ -3,12 +3,12 @@
 
 struct node
 {
-    int info;                 //node will store an integer
+    char info[200];           //node will store an integer
     struct node *right_child; // right child
     struct node *left_child;  // left child
 };
 typedef struct node *tree;
-tree search(tree root, int x)
+tree search(tree root, char *x)
 {
     if (root == NULL || root->info == x) //if root->info is x then the element is found
         return root;
