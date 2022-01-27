@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "postfix.h"
-#include "evaluation.h"
+
 
 int numstr(char *n,node arr)
 {
