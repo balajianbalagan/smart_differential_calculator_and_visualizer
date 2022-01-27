@@ -6,7 +6,7 @@
 #include "postfix.h"
 
 // #include "tree.h"
-// #include "differentiate.h"
+#include "differentiate.h"
 
 int numstr(char *n, node arr)
 {
@@ -92,6 +92,6 @@ int main()
     node findiff = createlist();
     differentiate(t, findiff);
     printf("Differentiated ecpression : \n");
-    display(diff);
+    display(findiff);
     return 0;
 }

@@ -2,10 +2,8 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-#include "stack.h"
-#include "tree.h"
 
-node differentiate(struct tree *etree, node findiff)
+void differentiate(struct tree *etree, node findiff)
 {
     node diff = createlist();
     if (etree->tfn == 0)
@@ -25,31 +23,31 @@ node differentiate(struct tree *etree, node findiff)
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "+"))
     {
-        insertEnd(diff, differentiate(etree->leftchild));
+        differentiate(etree->leftchild, diff);
         insertEnd(diff, "+", 3); //0-numbers 1-functions(sin,cos) 2-variable (x) 3-operators 4-open brackets 5-close brackets404-not defined yet
-        insertEnd(diff, differentiate(etree->rightchild));
+        differentiate(etree->rightchild, diff);
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "-"))
     {
-        insertEnd(diff, differentiate(etree->leftchild), 1);
+        differentiate(etree->leftchild, diff);
         insertEnd(diff, "-", 3);
-        insertEnd(diff, differentiate(etree->rightchild), 1);
+        differentiate(etree->rightchild, diff);
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "*"))
     {
         insertEnd(diff, inorder(etree->leftchild), 1);
-        insertEnd(diff, differentiate(etree->rightchild), 1);
+        differentiate(etree->rightchild, diff);
         insertEnd(diff, "+", 3);
         insertEnd(diff, inorder(etree->rightchild), 1);
-        insertEnd(diff, differentiate(etree->leftchild), 1);
+        differentiate(etree->leftchild, diff);
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "/"))
     {
         insertEnd(diff, inorder(etree->leftchild), 1);
-        insertEnd(diff, differentiate(etree->rightchild), 1);
+        differentiate(etree->rightchild, diff);
         insertEnd(diff, "-", 3);
         insertEnd(diff, inorder(etree->rightchild), 1);
-        insertEnd(diff, differentiate(etree->leftchild), 1);
+        differentiate(etree->leftchild, diff);
         insertEnd(diff, "/", 3);
         insertEnd(diff, "(", 4);
         insertEnd(diff, inorder(etree->rightchild), 1);
@@ -68,7 +66,7 @@ node differentiate(struct tree *etree, node findiff)
         insertEnd(diff, ")", 5);
         insertEnd(diff, ")", 5);
         insertEnd(diff, "*", 3);
-        insertEnd(diff, differentiate(etree->leftchild), 1);
+        differentiate(etree->leftchild, diff);
     }
     findiff = diff;
 }
