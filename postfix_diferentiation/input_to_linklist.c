@@ -2,8 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-
 #include "postfix.h"
+#include "evaluation.h"
+
 int numstr(char *n,node arr)
 {
     int i,k, nlen=strlen(n);
@@ -79,5 +80,6 @@ int main()
     node output=postfix(inputarray);
     printf("Postfix expression : \n");
     display(output);
+   
     return 0;
 }
