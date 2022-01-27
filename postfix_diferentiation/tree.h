@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include "doublylinkedlist.h"
 // 1) inorder shld return a string
 // 2) no main function shld be involved
 // 3)
@@ -25,18 +25,20 @@ struct tree *newNode(char *info, int tfn)
 
     return (node);
 }
-void printInorder(struct tree *node)
+char *inorder(struct tree *node)
 {
+    char io[200];
     if (node == NULL)
         return;
     else
     {
-        printInorder(node->leftchild);
-        printf("%c ", node->info);
+        inorder(node->leftchild);
+        strcat(io, node->info);
 
         /* now recur on rightchild child */
-        printInorder(node->rightchild);
+        inorder(node->rightchild);
     }
+    return io;
 }
 
 void push(struct tree *x)

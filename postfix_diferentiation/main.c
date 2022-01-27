@@ -79,10 +79,12 @@ int main()
     char inpstr[300];
     scanf("%[^\n]%*c", inpstr);
     storinput(inpstr, inputarray);
+
     node output = postfix(inputarray);
     printf("Postfix expression : \n");
     display(output);
     printf("\n");
+
     tree t = expressiontree(output);
     node diff = createlist();
     differentiate(t, diff);
