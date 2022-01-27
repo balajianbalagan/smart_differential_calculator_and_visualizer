@@ -2,7 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
+#include "tree.h"
 #include "postfix.h"
+
 // #include "tree.h"
 // #include "differentiate.h"
 
@@ -85,7 +87,8 @@ int main()
     display(output);
     printf("\n");
 
-    tree t = expressiontree(output);
+    struct tree * t = expressiontree(output);
+
     node diff = createlist();
     differentiate(t, diff);
     printf("Differentiated ecpression : \n");

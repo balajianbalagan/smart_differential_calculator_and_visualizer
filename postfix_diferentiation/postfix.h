@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "stack.h"
-#include "doublylinkedlist.h"
+// #include "doublylinkedlist.h"
 node postfix(node inparr)
 {
     if(isEmptydllist(inparr))

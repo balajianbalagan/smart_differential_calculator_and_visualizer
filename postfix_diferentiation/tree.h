@@ -25,11 +25,12 @@ struct tree *newNode(char *info, int tfn)
 
     return (node);
 }
-char *inorder(struct tree *node)
+char * inorder(struct tree *node)
 {
     char io[200];
+    char *nu="\0";
     if (node == NULL)
-        return;
+        return nu;
     else
     {
         inorder(node->leftchild);
@@ -38,10 +39,11 @@ char *inorder(struct tree *node)
         /* now recur on rightchild child */
         inorder(node->rightchild);
     }
-    return io;
+    char *tptr=io;
+    return tptr;
 }
 
-void push(struct tree *x)
+void treepush(struct tree *x)
 {
     if (head == NULL)
         head = x;
@@ -51,35 +53,61 @@ void push(struct tree *x)
         head = x;
     }
 }
-struct tree *pop()
+struct tree *treepop()
 {
     struct tree *p = head;
     head = head->next;
     return p;
 }
-int main()
+struct tree* expressiontree(node inparr)
 {
-    char s[] = {'A', 'B', 'C', '*', '+', 'D', '/'};
-    int l = sizeof(s) / sizeof(s[0]);
     struct tree *x, *y, *z;
-    for (int i = 0; i < l; i++)
+    node temp=inparr->rptr;
+    while (temp!=NULL)
     {
-        if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/' || s[i] == '^')
+        if(temp->fn==3)
         {
-            z = newNode(s[i]);
-            x = pop();
-            y = pop();
+            z = newNode(temp->info,temp->fn);
+            x = treepop();
+            y = treepop();
             z->leftchild = y;
             z->rightchild = x;
-            push(z);
+            treepush(z);
         }
-        else
-        {
-            z = newNode(s[i]);
-            push(z);
+        else{
+            z = newNode(temp->info,temp->fn);
+            treepush(z);
         }
+        temp=temp->rptr;
     }
-    printf(" The Inorder Traversal of Expression Tree: ");
-    printInorder(z);
-    return 0;
+    return z;
+    
 }
+// int main()
+// {
+//     char s[] = {'A', 'B', 'C', '*', '+', 'D', '/'};
+//     int l = sizeof(s) / sizeof(s[0]);
+//     struct tree *x, *y, *z;
+//     for (int i = 0; i < l; i++)
+//     {
+//         if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/' || s[i] == '^')
+//         {
+//             z = newNode(s[i]);
+//             x = pop();
+//             y = pop();
+//             z->leftchild = y;
+//             z->rightchild = x;
+//             push(z);
+//         }
+//         else
+//         {
+
+
+//             z = newNode(s[i]);
+//             push(z);
+//         }
+//     }
+//     printf(" The Inorder Traversal of Expression Tree: ");
+//     printInorder(z);
+//     return 0;
+// }
