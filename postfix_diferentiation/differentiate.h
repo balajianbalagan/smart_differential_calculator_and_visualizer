@@ -5,11 +5,12 @@
 #include "stack.h"
 #include "tree.h"
 
-node differentiate(struct tree* etree, node diff)
+node differentiate(struct tree *etree, node findiff)
 {
+    node diff = createlist();
     if (etree->tfn == 0)
     {
-        insertEnd(diff, "0",0);
+        insertEnd(diff, "0", 0);
     }
     else if (etree->tfn == 1)
     {
@@ -19,7 +20,7 @@ node differentiate(struct tree* etree, node diff)
     {
         if (strcmp("x", etree->info))
         {
-           insertEnd(diff, "1",0);
+            insertEnd(diff, "1", 0);
         }
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "+"))
@@ -69,4 +70,5 @@ node differentiate(struct tree* etree, node diff)
         insertEnd(diff, "*", 3);
         insertEnd(diff, differentiate(etree->leftchild), 1);
     }
+    findiff = diff;
 }

@@ -87,10 +87,10 @@ int main()
     display(output);
     printf("\n");
 
-    struct tree * t = expressiontree(output);
+    struct tree *t = expressiontree(output);
 
-    node diff = createlist();
-    differentiate(t, diff);
+    node findiff = createlist();
+    differentiate(t, findiff);
     printf("Differentiated ecpression : \n");
     display(diff);
     return 0;
