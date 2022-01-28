@@ -89,5 +89,5 @@ void differentiate(struct tree *etree, node diff)
         insertEnd(diff, "*", 3);
         differentiate(etree->leftchild, diff);
     }
-    printf("last-----");display(diff);printf("\n");
+    printf("last---");display(diff);printf("\n");
 }
