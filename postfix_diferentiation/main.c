@@ -86,11 +86,11 @@ int main()
     printf("\n");
     struct tree *t = expressiontree(output);
     inorder(t);
-    printf("%s",io);
-    strcpy(io,"\0");
+    printf("%s", io);
+    strcpy(io, "\0");
     node findiff = createlist();
     differentiate(t, findiff);
     printf("Differentiated expression : \n");
-    display(findiff);
+    displaywithoutspace(findiff);
     return 0;
 }
