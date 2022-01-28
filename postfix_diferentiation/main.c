@@ -5,7 +5,6 @@
 #include "tree.h"
 #include "postfix.h"
 #include "differentiate.h"
-#include "evaluationofopt.h"
 
 int numstr(char *n, node arr)
 {
@@ -99,20 +98,6 @@ int main()
     printf("Differentiated expression before simplification : \n");
     displaywithoutspace(findiff);
     printf("\n");
-
-    //optimization
-    //step 1 : creating feedback input from findiff
-    convertostring(findiff);
-    printf("\nFeedback Input : %s\n", optstring);
-    //step 2 : storing it as a dll
-    node feedbackinputarray = createlist();
-    storinput(optstring, feedbackinputarray);
-    //step 3 : creating postfix expression again for optimizing output
-    node optoutput = postfix(feedbackinputarray);
-    printf("\nPostfix expression of optimization input : \n");
-    display(optoutput);
-    printf("\n");
-    //step 4 : evaluation of the postfix expression
 
     return 0;
 }

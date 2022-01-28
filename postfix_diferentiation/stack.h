@@ -8,7 +8,7 @@ struct snoderec
     struct snoderec *next;
 };
 typedef struct snoderec *snode;
-snode temp, prev,snew;
+snode temp, prev, snew;
 typedef snode stack;
 
 stack create()
@@ -22,11 +22,11 @@ int isEmpty(stack s)
 {
     return (s->next == NULL);
 }
-void push(stack s, char *x,int sfnval)
+void push(stack s, char *x, int sfnval)
 {
     snew = (struct snoderec *)malloc(sizeof(struct snoderec *));
     strcpy(snew->info, x);
-    snew->sfn=sfnval;
+    snew->sfn = sfnval;
     // strcpy(s->next,snew);
     // snew->info = x;
     snew->next = s->next;
@@ -59,13 +59,15 @@ char *top(stack s)
         return "\0";
     }
 }
+
 int topfn(stack s)
 {
-    if(!isEmpty(s))
+    if (!isEmpty(s))
     {
         return (s->next)->sfn;
     }
-    else{
+    else
+    {
         printf("Stack is empty\n");
         return -1;
     }
