@@ -5,6 +5,7 @@
 #include "tree.h"
 #include "postfix.h"
 #include "differentiate.h"
+#include "evaluationofopt.h"
 
 int numstr(char *n, node arr)
 {
@@ -75,27 +76,24 @@ void storinput(char *str, node arr)
 }
 int main()
 {
-    //getting input
+    //differentiation basics
+    //step 1) getting the input as a string
     node inputarray = createlist();
     char inpstr[300];
     scanf("%[^\n]%*c", inpstr);
-
-    //prioritizing inputs
+    //step 2) inserting into linked list and prioritizing inputs
     storinput(inpstr, inputarray);
-
-    //converting to postfix
+    //step 3) converting to postfix
     node output = postfix(inputarray);
     printf("Postfix expression of input : \n");
     display(output);
     printf("\n");
-
-    //creating expression tree
+    //step 4) creating expression tree
     struct tree *t = expressiontree(output);
     // inorder(t);
     // printf("%s", io);
     strcpy(io, "\0");
-
-    //differentiation
+    //step 5) differentiation of expression tree
     node findiff = createlist();
     differentiate(t, findiff);
     printf("Differentiated expression before simplification : \n");
@@ -115,5 +113,6 @@ int main()
     display(optoutput);
     printf("\n");
     //step 4 : evaluation of the postfix expression
+
     return 0;
 }
