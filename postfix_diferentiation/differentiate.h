@@ -6,13 +6,10 @@
 // #include "tree.h"
 void differentiate(struct tree *etree, node diff)
 {
-    printf("info===%s\n", etree->info);
 
     if (etree->tfn == 0)
     {
         insertEnd(diff, "0", 0);
-        printf("oo\n");
-        display(diff);
     }
     else if (etree->tfn == 1)
     {
@@ -21,8 +18,6 @@ void differentiate(struct tree *etree, node diff)
     else if (etree->tfn == 2)
     {
         insertEnd(diff, "1", 0);
-        printf("@@@@\n");
-        display(diff);
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "+") == 0)
     {
@@ -94,6 +89,9 @@ void differentiate(struct tree *etree, node diff)
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "^") == 0)
     {
+        int val = atoi(etree->rightchild->info);
+        char str[50];
+        sprintf(str, "%d", val - 1);
         insertEnd(diff, "(", 4);
         insertEnd(diff, "(", 4);
         insertEnd(diff, etree->rightchild->info, 1);
@@ -102,7 +100,7 @@ void differentiate(struct tree *etree, node diff)
         insertEnd(diff, etree->leftchild->info, 1);
         insertEnd(diff, "^", 4);
         insertEnd(diff, "(", 4);
-        insertEnd(diff, etree->rightchild->info - 1, 1);
+        insertEnd(diff, str, 1);
         insertEnd(diff, ")", 5);
         insertEnd(diff, ")", 5);
         insertEnd(diff, ")", 5);
@@ -111,7 +109,4 @@ void differentiate(struct tree *etree, node diff)
         insertEnd(diff, ")", 5);
         insertEnd(diff, ")", 5);
     }
-    printf("last---");
-    display(diff);
-    printf("\n");
 }

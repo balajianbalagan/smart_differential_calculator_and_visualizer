@@ -75,22 +75,45 @@ void storinput(char *str, node arr)
 }
 int main()
 {
+    //getting input
     node inputarray = createlist();
     char inpstr[300];
     scanf("%[^\n]%*c", inpstr);
+
+    //prioritizing inputs
     storinput(inpstr, inputarray);
 
+    //converting to postfix
     node output = postfix(inputarray);
-    printf("Postfix expression : \n");
+    printf("Postfix expression of input : \n");
     display(output);
     printf("\n");
+
+    //creating expression tree
     struct tree *t = expressiontree(output);
-    inorder(t);
-    printf("%s", io);
+    // inorder(t);
+    // printf("%s", io);
     strcpy(io, "\0");
+
+    //differentiation
     node findiff = createlist();
     differentiate(t, findiff);
-    printf("Differentiated expression : \n");
+    printf("Differentiated expression before simplification : \n");
     displaywithoutspace(findiff);
+    printf("\n");
+
+    //optimization
+    //step 1 : creating feedback input from findiff
+    convertostring(findiff);
+    printf("\nFeedback Input : %s\n", optstring);
+    //step 2 : storing it as a dll
+    node feedbackinputarray = createlist();
+    storinput(optstring, feedbackinputarray);
+    //step 3 : creating postfix expression again for optimizing output
+    node optoutput = postfix(feedbackinputarray);
+    printf("\nPostfix expression of optimization input : \n");
+    display(optoutput);
+    printf("\n");
+    //step 4 : evaluation of the postfix expression
     return 0;
 }

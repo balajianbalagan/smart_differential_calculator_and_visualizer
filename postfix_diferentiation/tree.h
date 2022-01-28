@@ -35,7 +35,7 @@ struct tree *newNode(char *info, int tfn)
 //         char *l=inorder(node->leftchild,io);
 
 //         printf( " inside==%s\n",node->info);
-       
+
 //         strcat(io, node->info);
 //          printf( " io==%s\n",io);
 //         /* now recur on rightchild child */
@@ -48,19 +48,17 @@ struct tree *newNode(char *info, int tfn)
 char io[100];
 void inorder(struct tree *node)
 {
-    char *nu="\0";
+    char *nu = "\0";
     if (node == NULL)
-        return ;
+        return;
     else
     {
         inorder(node->leftchild);
         strcat(io, node->info);
-        printf("fns- %d \n",node->tfn);
 
         /* now recur on rightchild child */
         inorder(node->rightchild);
     }
-    
 }
 void treepush(struct tree *x)
 {
@@ -78,29 +76,29 @@ struct tree *treepop()
     head = head->next;
     return p;
 }
-struct tree* expressiontree(node inparr)
+struct tree *expressiontree(node inparr)
 {
     struct tree *x, *y, *z;
-    node temp=inparr->rptr;
-    while (temp!=NULL)
+    node temp = inparr->rptr;
+    while (temp != NULL)
     {
-        if(temp->fn==3)
+        if (temp->fn == 3)
         {
-            z = newNode(temp->info,temp->fn);
+            z = newNode(temp->info, temp->fn);
             x = treepop();
             y = treepop();
             z->leftchild = y;
             z->rightchild = x;
             treepush(z);
         }
-        else{
-            z = newNode(temp->info,temp->fn);
+        else
+        {
+            z = newNode(temp->info, temp->fn);
             treepush(z);
         }
-        temp=temp->rptr;
+        temp = temp->rptr;
     }
     return z;
-    
 }
 // int main()
 // {
@@ -120,7 +118,6 @@ struct tree* expressiontree(node inparr)
 //         }
 //         else
 //         {
-
 
 //             z = newNode(s[i]);
 //             push(z);

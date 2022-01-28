@@ -130,6 +130,26 @@ void display(header l)
         printf("\n");
     }
 }
+char optstring[100];
+void convertostring(header l)
+{
+    node temp;
+    if (isEmptydllist(l))
+    {
+        printf("List is empty No elements\n");
+    }
+    else
+    {
+        temp = l->rptr;
+        printf("The elements are : ");
+        while (temp != NULL)
+        {
+            // printf(" %s %d \n",temp->info,temp->fn);
+            strcat(optstring, temp->info);
+            temp = temp->rptr;
+        }
+    }
+}
 
 void displaywithoutspace(header l)
 {
