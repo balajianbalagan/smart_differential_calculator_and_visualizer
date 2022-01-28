@@ -84,13 +84,13 @@ int main()
     printf("Postfix expression : \n");
     display(output);
     printf("\n");
-
-    // struct tree *t = expressiontree(output);
-    // // char *o=inorder(t);
-    // // printf("%s",o);
-    // node findiff = createlist();
-    // differentiate(t, findiff);
-    // printf("Differentiated ecpression : \n");
-    // display(findiff);
+    struct tree *t = expressiontree(output);
+    inorder(t);
+    printf("%s",io);
+    strcpy(io,"\0");
+    node findiff = createlist();
+    differentiate(t, findiff);
+    printf("Differentiated expression : \n");
+    display(findiff);
     return 0;
 }

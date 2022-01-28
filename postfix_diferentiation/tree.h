@@ -46,21 +46,21 @@ struct tree *newNode(char *info, int tfn)
 //     return tptr;
 // }
 char io[100];
-char * inorder(struct tree *node)
+void inorder(struct tree *node)
 {
     char *nu="\0";
     if (node == NULL)
-        return nu;
+        return ;
     else
     {
         inorder(node->leftchild);
         strcat(io, node->info);
+        printf("fns- %d \n",node->tfn);
 
         /* now recur on rightchild child */
         inorder(node->rightchild);
     }
-    char *tptr=io;
-    return tptr;
+    
 }
 void treepush(struct tree *x)
 {
