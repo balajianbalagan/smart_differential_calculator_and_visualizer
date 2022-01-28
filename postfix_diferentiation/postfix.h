@@ -89,6 +89,7 @@ node postfix(node inparr)
                }
             temp=temp->rptr;
         }
+        display(parsearr);
         return parsearr;
     }
 }
