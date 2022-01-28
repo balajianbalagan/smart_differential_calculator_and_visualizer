@@ -4,10 +4,10 @@
 #include <ctype.h>
 // #include "doublylinkedlist.h"
 // #include "tree.h"
-void differentiate(struct tree *etree, node findiff)
+void differentiate(struct tree *etree, node diff)
 {
     printf("info===%s\n",etree->info);
-    node diff = createlist();
+    
     if (etree->tfn == 0)
     {
         insertEnd(diff, "0", 0);
@@ -46,14 +46,15 @@ void differentiate(struct tree *etree, node findiff)
         strcpy(io,"\0");
         inorder(etree->leftchild);
         insertEnd(diff, io, 1);
-        
+        insertEnd(diff, "*", 3);
         differentiate(etree->rightchild, diff);
         insertEnd(diff, "+", 3);
         strcpy(io,"\0");
         inorder(etree->rightchild);
         insertEnd(diff,io , 1);
-        
+        insertEnd(diff, "*", 3);
         differentiate(etree->leftchild, diff);
+
     }
     else if (etree->tfn == 3 && strcmp(etree->info, "/")==0)
     {
@@ -89,5 +90,4 @@ void differentiate(struct tree *etree, node findiff)
         differentiate(etree->leftchild, diff);
     }
     printf("last-----");display(diff);printf("\n");
-    findiff = diff;
 }
