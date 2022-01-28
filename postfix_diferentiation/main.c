@@ -66,11 +66,6 @@ void storinput(char *str, node arr)
             strncat(ins, &temp[i], 1);
             insertEnd(arr, ins, 5);
         }
-        // else{
-        //     char ins[]="\0";
-        //     strncat(ins,&temp[i],1);
-        //     insertEnd(arr,ins,404);
-        // }
     }
 }
 int main()

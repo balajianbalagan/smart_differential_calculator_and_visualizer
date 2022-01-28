@@ -63,10 +63,6 @@ void insertEnd(header l, char *x, int fnval)
     }
     else
     {
-        // dnew->rptr=l;
-        // dnew->lptr=l->lptr;
-        // (l->lptr)->rptr=dnew;
-        // l->lptr=dnew;
         dnew->rptr = NULL;
         temp = l->rptr;
         while (temp->rptr != NULL)
@@ -77,39 +73,6 @@ void insertEnd(header l, char *x, int fnval)
         temp->rptr = dnew;
     }
 }
-// void insertmid(header l,char * x,int pos,int fnval)
-// {
-//     node temp,dnew;
-//     dnew=(node)malloc(sizeof(struct noderec));
-//     strcpy(dnew->info,x);
-//     dnew->fn=fnval;
-//     if(isEmptydllist(l))
-//     {
-//         dnew->rptr=NULL;
-//         dnew->lptr=l;
-//         l->rptr=dnew;
-//     }
-//     else{
-//         int i=1;
-//         temp=l;
-//         while(temp->rptr!=NULL && i<pos)
-//         {
-//             temp=temp->rptr;i++;
-//         }
-//         if(temp->rptr==NULL)
-//         {
-//             dnew->rptr=NULL;
-//             dnew->lptr=temp;
-//             temp->rptr=dnew;
-//         }
-//         else{
-//             dnew->rptr=temp->rptr;
-//             dnew->lptr=temp;
-//             (temp->rptr)->lptr=dnew;
-//             temp->rptr=dnew;
-//         }
-//     }
-// }
 void display(header l)
 {
     node temp;
@@ -123,7 +86,6 @@ void display(header l)
         printf("The elements are : ");
         while (temp != NULL)
         {
-            // printf(" %s %d \n",temp->info,temp->fn);
             printf(" %s ", temp->info);
             temp = temp->rptr;
         }
@@ -171,62 +133,3 @@ void displaywithoutspace(header l)
         printf("\n");
     }
 }
-
-//extras
-// void delete(header l,char* x)
-// {
-//     node temp;
-//     if(isEmptydllist(l))
-//     {
-//         printf("List is Empty\n");
-//     }
-//     else{
-//         temp=l->rptr;
-//         while(temp!=NULL && temp->info!=x)
-//         {
-//             temp=temp->rptr;
-//         }
-//         if(temp==NULL)
-//         {
-//             printf("Element not found\n");
-//         }
-//         else if(temp->rptr==NULL){
-//             (temp->lptr)->rptr=NULL;
-//             free(temp);
-//         }
-//         else{
-//             temp->lptr->rptr=temp->rptr;
-//             temp->rptr->lptr=temp->lptr;
-//             free(temp);
-//             printf("The element deleted\n");
-//         }
-//     }
-// }
-// void search(header l,int x)
-// {
-//     if(isEmptydllist(l))
-//     {
-//         printf("List is empty no search\n");
-//     }
-//     else{
-//         int i=1;
-//         node temp=l->rptr;
-//         while (temp!=NULL && temp->info!=x)
-//         {
-//             temp=temp->rptr;i++;
-//         }
-//         if(temp==NULL)
-//         {
-//             printf("Not found\n");
-//         }
-//         else{
-//             printf("The position is : %d  \n",i);
-//         }
-//     }
-// }
-// int main()
-// {
-//     node m=createlist();
-//     insertEnd(m,"sd",404);
-//     display(m);
-// }

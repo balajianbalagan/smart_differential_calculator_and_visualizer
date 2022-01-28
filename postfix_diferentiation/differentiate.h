@@ -2,18 +2,12 @@
 #include <string.h>
 #include <stdlib.h>
 #include <ctype.h>
-// #include "doublylinkedlist.h"
-// #include "tree.h"
 void differentiate(struct tree *etree, node diff)
 {
 
     if (etree->tfn == 0)
     {
         insertEnd(diff, "0", 0);
-    }
-    else if (etree->tfn == 1)
-    {
-        // node diff = createlist();
     }
     else if (etree->tfn == 2)
     {

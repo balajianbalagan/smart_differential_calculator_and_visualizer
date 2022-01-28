@@ -27,8 +27,6 @@ void push(stack s, char *x, int sfnval)
     snew = (struct snoderec *)malloc(sizeof(struct snoderec *));
     strcpy(snew->info, x);
     snew->sfn = sfnval;
-    // strcpy(s->next,snew);
-    // snew->info = x;
     snew->next = s->next;
     s->next = snew;
 }
@@ -72,19 +70,6 @@ int topfn(stack s)
         return -1;
     }
 }
-// char *topandpop(stack s)
-// {
-//     if (!isEmpty(s))
-//     {
-//         char *t = (s->next)->info;
-//         pop(s);
-//         return t;
-//     }
-//     else
-//     {
-//         printf("\nList is already Empty\n");
-//     }
-// }
 void makeempty(stack s)
 {
     while (!isEmpty(s))

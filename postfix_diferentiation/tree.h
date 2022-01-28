@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include "doublylinkedlist.h"
-// 1) inorder shld return a string
-// 2) no main function shld be involved
-// 3)
 struct tree
 {
     char info[200];
@@ -25,26 +22,6 @@ struct tree *newNode(char *info, int tfn)
 
     return (node);
 }
-// char * inorder(struct tree *node,char *io)
-// {
-//     char *nu="\0";
-//     if (node == NULL)
-//         return nu;
-//     else
-//     {
-//         char *l=inorder(node->leftchild,io);
-
-//         printf( " inside==%s\n",node->info);
-
-//         strcat(io, node->info);
-//          printf( " io==%s\n",io);
-//         /* now recur on rightchild child */
-//          char *ll=inorder(node->rightchild,io);
-//     }
-//     printf("1\n");
-//     char *tptr=io;
-//     return tptr;
-// }
 char io[100];
 void inorder(struct tree *node)
 {
@@ -100,30 +77,3 @@ struct tree *expressiontree(node inparr)
     }
     return z;
 }
-// int main()
-// {
-//     char s[] = {'A', 'B', 'C', '*', '+', 'D', '/'};
-//     int l = sizeof(s) / sizeof(s[0]);
-//     struct tree *x, *y, *z;
-//     for (int i = 0; i < l; i++)
-//     {
-//         if (s[i] == '+' || s[i] == '-' || s[i] == '*' || s[i] == '/' || s[i] == '^')
-//         {
-//             z = newNode(s[i]);
-//             x = pop();
-//             y = pop();
-//             z->leftchild = y;
-//             z->rightchild = x;
-//             push(z);
-//         }
-//         else
-//         {
-
-//             z = newNode(s[i]);
-//             push(z);
-//         }
-//     }
-//     printf(" The Inorder Traversal of Expression Tree: ");
-//     printInorder(z);
-//     return 0;
-// }
