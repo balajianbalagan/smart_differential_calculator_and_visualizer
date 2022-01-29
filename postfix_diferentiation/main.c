@@ -76,14 +76,14 @@ int main()
     char inpstr[300];
     scanf("%[^\n]%*c", inpstr);
     //step 2) inserting into linked list and prioritizing inputs
-    storinput(inpstr, inputarray);
+    storinput(inpstr, inputarray); //=======> kanivan
     //step 3) converting to postfix
     node output = postfix(inputarray);
     printf("Postfix expression of input : \n");
     display(output);
     printf("\n");
     //step 4) creating expression tree
-    struct tree *t = expressiontree(output);
+    struct tree *t = expressiontree(output); //=======> balaju
     // inorder(t);
     // printf("%s", io);
     strcpy(io, "\0");

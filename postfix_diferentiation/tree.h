@@ -61,9 +61,9 @@ struct tree *expressiontree(node inparr)
     {
         if (temp->fn == 3)
         {
-            z = newNode(temp->info, temp->fn);
-            x = treepop();
-            y = treepop();
+            z = newNode(temp->info, temp->fn); // ex) 1+x      +
+            x = treepop();                     /*             / \                   */
+            y = treepop();                     //            1   x
             z->leftchild = y;
             z->rightchild = x;
             treepush(z);
